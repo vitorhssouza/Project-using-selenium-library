@@ -60,35 +60,40 @@ class Uol(Empresa):
         data_hora = list()
         codigos_empresas = list()
 
-        for empresa in self._Empresa__codigo:
-            if empresa not in '':
+        corre = ' '.replace(' ', '')
 
-                input_busca = driver.find_element(By.ID, 'filled-normal')
-
-                input_busca.send_keys(empresa)
-                sleep(8)
-
-                input_busca.send_keys(Keys.ENTER)
-                sleep(4)
-
-                span_val = driver.find_element(By.XPATH, '//span[@class="chart-info-val ng-binding"]')
-                cotacao_valor = span_val.text
-
-                valores.append(cotacao_valor)
-                data_hora.append(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
-
-                print(f'Valor da cotação da {empresa}: {cotacao_valor}')
-                codigos_empresas.append(empresa)
-            else:
+        for c in self._Empresa__codigo:
+            if c == corre:
                 print('Código inválido')
+            else:
+                codigos_empresas.append(corre)
 
-        dados = {
-            'Data': data_hora,
-            'Empresa': codigos_empresas,
-            'Cotação': valores
-            }
+        for empresa in codigos_empresas:
+            input_busca = driver.find_element(By.ID, 'filled-normal')
 
-        self.__uol = pd.DataFrame(dados)
-        self.__uol.set_index('Data', inplace=True)
-        return self.__uol
+            input_busca.send_keys(empresa)
+            sleep(8)
+
+            input_busca.send_keys(Keys.ENTER)
+            sleep(4)
+
+            span_val = driver.find_element(By.XPATH, '//span[@class="chart-info-val ng-binding"]')
+            cotacao_valor = span_val.text
+
+            valores.append(cotacao_valor)
+            data_hora.append(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
+
+            print(f'Valor da cotação da {empresa}: {cotacao_valor}')
+
+        if len(codigos_empresas) == 0:
+            return 'Não foram inserido nenhum código valído'
+        else:
+            dados = {
+                'Data': data_hora,
+                'Empresa': codigos_empresas,
+                'Cotação': valores
+                }
+            self.__uol = pd.DataFrame(dados)
+            self.__uol.set_index('Data', inplace=True)
+            return self.__uol
 
