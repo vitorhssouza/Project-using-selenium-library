@@ -11,7 +11,7 @@ def menu() -> None:
     print('PROJETO SELENIUM'.center(90))
     print('RASPAGEM DA BOLSA DE VALORES DO SITE UOL'.center(90))
     linha()
-    print('1  - CÓDIGOS DE AÇÕES\n'
+    print('1  - CÓDIGOS DE AÇÕES NO SITE DA B3\n'
           '2  - INFORME O CÓDIGO DAS AÇÕES QUE DESEJA VERIFICAR SEU VALOR\n'
           '3  - SAIR DO SISTEMA')
 
@@ -47,7 +47,7 @@ def escolha_opcao(opcao: int) -> None:
 def nome_empresa() -> list:
     empresas = list()
     while True:
-        empresas.append(str(input('Informe o nome das empresas: ')))
+        empresas.append(str(input('Informe o nome das empresas: ')).upper())
         while True:
             opcao = int(input('Deseja informa mais alguma empresa? 1-Sim ou 2-Não '))
             if opcao < 1 or opcao > 2:
@@ -60,14 +60,11 @@ def nome_empresa() -> list:
         if opcao == 2:
             linha()
             break
-    if len(empresas) == 0:
-        print('Não foi inserido nenhum código de empresa')
-    else:
-        codigos_empresas = Empresa(empresas)
-        sleep(2)
-        print('Imprimindo as cotações das empresas ')
-        uol = Uol(empresas, 'https://economia.uol.com.br/cotacoes/bolsas/')
-        print(uol.uol)
+    codigos_empresas = Empresa(empresas)
+    sleep(2)
+    print('Imprimindo as cotações das empresas ')
+    uol = Uol(empresas, 'https://economia.uol.com.br/cotacoes/bolsas/')
+    print(uol.uol)
 
 
 
