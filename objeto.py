@@ -6,8 +6,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from datetime import datetime
 import pandas as pd
-from time import sleep
 from modulos.funcoes import *
+from time import sleep
+
 
 
 class Empresa:
@@ -45,42 +46,49 @@ class Uol(Empresa):
 
     @property
     def uol(self: object) -> None:
-        #options = Options()
-        #options.add_argument('--headless')
+        options = Options()
+        options.add_argument('--headless')
 
         driver = webdriver.Chrome(
             service=Service(ChromeDriverManager().install()),
-            #options=options
+            options=options
         )
 
         driver.get(self.__uol)
 
-
         valores = list()
         data_hora = list()
+        codigos_empresas = list()
 
         for empresa in self._Empresa__codigo:
-            input_busca = driver.find_element(By.ID, 'filled-normal')
-            input_busca.send_keys(empresa)
-            sleep(8)
+            if empresa not in '':
 
-            input_busca.send_keys(Keys.ENTER)
-            sleep(4)
+                input_busca = driver.find_element(By.ID, 'filled-normal')
 
-            span_val = driver.find_element(By.XPATH, '//span[@class="chart-info-val ng-binding"]')
-            cotacao_valor = span_val.text
+                input_busca.send_keys(empresa)
+                sleep(8)
 
-            valores.append(cotacao_valor)
-            data_hora.append(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))  #
+                input_busca.send_keys(Keys.ENTER)
+                sleep(4)
 
-            print(f'Valor da cotação da {empresa}: {cotacao_valor}')
+                span_val = driver.find_element(By.XPATH, '//span[@class="chart-info-val ng-binding"]')
+                cotacao_valor = span_val.text
+
+                valores.append(cotacao_valor)
+                data_hora.append(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
+
+                print(f'Valor da cotação da {empresa}: {cotacao_valor}')
+                codigos_empresas.append(empresa)
+            else:
+                print('Código inválido')
 
         dados = {
             'Data': data_hora,
-            'Empresa': self._Empresa__codigo,
+            'Empresa': codigos_empresas,
             'Cotação': valores
-        }
+            }
 
         self.__uol = pd.DataFrame(dados)
         self.__uol.set_index('Data', inplace=True)
         return self.__uol
+
