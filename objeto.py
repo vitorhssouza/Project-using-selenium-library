@@ -11,6 +11,8 @@ from time import sleep
 
 
 class Empresa:
+    """Essa classe recebe os códigos das empresas que seram pesquisada na classe uol e retorna
+    em uma todos os códigos inseridos para raspagem de dados em uma lista"""
 
     def __init__(self, codigo: list) -> list:
         self.__codigo = codigo
