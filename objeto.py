@@ -60,13 +60,9 @@ class Uol(Empresa):
         data_hora = list()
         codigos_empresas = list()
 
-        corre = ' '.replace(' ', '')
-
-        for c in self._Empresa__codigo:
-            if c == corre:
-                print('Código inválido')
-            else:
-                codigos_empresas.append(corre)
+        for espaco in self._Empresa__codigo:
+            if espaco not in '':
+                codigos_empresas.append(espaco)
 
         for empresa in codigos_empresas:
             input_busca = driver.find_element(By.ID, 'filled-normal')
@@ -83,17 +79,14 @@ class Uol(Empresa):
             valores.append(cotacao_valor)
             data_hora.append(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
 
-            print(f'Valor da cotação da {empresa}: {cotacao_valor}')
+            #print(f'Valor da cotação da {empresa}: {cotacao_valor}')
 
-        if len(codigos_empresas) == 0:
-            return 'Não foram inserido nenhum código valído'
-        else:
-            dados = {
-                'Data': data_hora,
-                'Empresa': codigos_empresas,
-                'Cotação': valores
-                }
-            self.__uol = pd.DataFrame(dados)
-            self.__uol.set_index('Data', inplace=True)
-            return self.__uol
+        dados = {
+            'Data': data_hora,
+            'Empresa': codigos_empresas,
+            'Cotação': valores
+            }
+        self.__uol = pd.DataFrame(dados)
+        self.__uol.set_index('Data', inplace=True)
+        return self.__uol
 
