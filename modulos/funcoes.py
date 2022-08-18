@@ -25,6 +25,7 @@ def escolha_opcao(opcao: int) -> None:
         print('Abrindo o site da B3 para visualizar códigos das ações ')
         sleep(3)
         empresa = B3('https://sistemaswebb3-listados.b3.com.br/indexPage/day/IBOV?language=pt-br')
+        print(empresa.site)
         print('Retornando ao menu')
         sleep(2)
         menu()
