@@ -11,8 +11,10 @@ from time import sleep
 
 
 class Empresa:
-    """Essa classe recebe os códigos das empresas que seram pesquisada na classe uol e retorna
-    em uma todos os códigos inseridos para raspagem de dados em uma lista"""
+    """
+    Essa classe recebe os códigos das empresas que seram pesquisada na classe uol e retorna
+    os códigos inseridos em uma lista
+    """
 
     def __init__(self, codigo: list) -> list:
         self.__codigo = codigo
@@ -23,7 +25,9 @@ class Empresa:
 
 
 class B3:
-
+    """
+    Essa classe rebece um site e abre ele no navegador.
+    """
     def __init__(self: object, site: str) -> None:
         self.__site = site
 
@@ -42,6 +46,11 @@ class B3:
 
 
 class Uol(Empresa):
+    """
+    Essa classe herda da classe empresas os dados que foram inserido e cria um robô que busca os valores
+    das ações na ibovespa através dos códigos que o usuario inseriu e retorna os valores atual em um
+    dataframe pandas
+    """
 
     def __init__(self: object, codigo: list, uol: str) -> None:
         super().__init__(codigo)
