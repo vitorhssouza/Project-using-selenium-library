@@ -47,7 +47,7 @@ def escolha_opcao(opcao: int) -> None:
 def nome_empresa() -> list:
     empresas = list()
     while True:
-        empresas.append(str(input('Informe o nome das empresas: ')).upper())
+        empresas.append(str(input('Informe o nome das empresas: ')).upper().replace(' ', ''))
         while True:
             opcao = int(input('Deseja informa mais alguma empresa? 1-Sim ou 2-Não '))
             if opcao < 1 or opcao > 2:
