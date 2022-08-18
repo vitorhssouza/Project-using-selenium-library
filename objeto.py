@@ -10,7 +10,6 @@ from modulos.funcoes import *
 from time import sleep
 
 
-
 class Empresa:
 
     def __init__(self, codigo: list) -> list:
@@ -27,14 +26,16 @@ class B3:
         self.__site = site
 
     @property
-    def site(self: object) -> str:
+    def site(self: object) -> None:
         driver = webdriver.Chrome(
             service=Service(ChromeDriverManager().install())
         )
         driver.get(self.__site)
         driver = input('Nesse site encontramos codígos de ações que estão na bolsa de valores\n'
                        'Aperte ENTER para fechar o site.')
-        self.__b3 = driver
+
+        self.__site = driver
+
         return self.__site
 
 
