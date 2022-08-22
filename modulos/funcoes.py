@@ -7,6 +7,7 @@ def linha(tamanho: int = 90) -> None:
 
 
 def menu() -> None:
+    """Interface gráfica do usuário """
     linha()
     print('PROJETO SELENIUM'.center(90))
     print('RASPAGEM DA BOLSA DE VALORES DO SITE UOL'.center(90))
@@ -20,6 +21,7 @@ def menu() -> None:
 
 
 def escolha_opcao(opcao: int) -> None:
+    """Função que recebe a escolha do usuário e interage com o sistema"""
     if opcao == 1:
         linha()
         print('Abrindo o site da B3 para visualizar códigos das ações ')
@@ -46,6 +48,8 @@ def escolha_opcao(opcao: int) -> None:
 
 
 def nome_empresa() -> list:
+    """Essa função cria uma lista com os códigos das empresas que seram buscada no site uol para visulização
+       dos valores atual de suas ações"""
     empresas = list()
     while True:
         empresas.append(str(input('Informe o nome das empresas: ')).upper().replace(' ', ''))
