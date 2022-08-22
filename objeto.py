@@ -58,12 +58,12 @@ class Uol(Empresa):
 
     @property
     def uol(self: object) -> None:
-        #options = Options()
-        #options.add_argument('--headless')
+        options = Options()
+        options.add_argument('--headless')
 
         driver = webdriver.Chrome(
             service=Service(ChromeDriverManager().install()),
-            #options=options
+            options=options
         )
 
         driver.get(self.__uol)
