@@ -9,9 +9,9 @@ imprimimos essa valor em um DataFrame.
 
 ### Imagem
 
-![](imagens/b3%20e%20menu.JPG "print do projeto b3")
+![](imagens/b3.JPG "print do projeto b3")
 
-![](imagens/opcao%202.JPG "Print do projeto uol")
+![](imagens/busca.JPG "Print do projeto uol")
 
 ### Ambiente de desenvolvimento
 
