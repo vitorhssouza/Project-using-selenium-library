@@ -1,4 +1,4 @@
-from modulos.funcoes import *
+from modulos_interface.funcoes import *
 
 
 def main() -> None:

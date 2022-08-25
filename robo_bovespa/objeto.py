@@ -6,7 +6,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from datetime import datetime
 import pandas as pd
-from modulos.funcoes import *
+from modulos_interface.funcoes import *
 from time import sleep
 
 
