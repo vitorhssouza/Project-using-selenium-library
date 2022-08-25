@@ -31,3 +31,4 @@ Vitor Hugo Silva Souza | E-mail: vitorsouzasilvaa@hotmail.com
     <a href="https://github.com/vitorhssouza" target="_blank"><i class="fa fa-github"></i></a>
 </div>
 
+[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vitorhugossouza/)
