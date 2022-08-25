@@ -9,7 +9,7 @@ imprimimos essa valor em um DataFrame.
 
 ### Imagem
 
-![](imagens/b3 e menu.JPG "print do projeto b3")
+![](b3 e menu.JPG "print do projeto b3")
 
 ![](imagens/opcao 2.JPG "Print do projeto uol")
 
