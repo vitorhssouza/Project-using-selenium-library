@@ -22,6 +22,7 @@ do processo e *pandas* para imprimir o resultado em um dataframe
 ### Meta 
 
 Vitor Hugo Silva Souza | E-mail: vitorsouzasilvaa@hotmail.com
+
  <div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <a href="https://www.linkedin.com/in/vitorhugossouza/" target="_blank"><i class="fa fa-linkedin"></i></a>
@@ -29,3 +30,4 @@ Vitor Hugo Silva Souza | E-mail: vitorsouzasilvaa@hotmail.com
     <a href="https://www.instagram.com/viitorsouza10" target="_blank"><i class="fa fa-instagram"></i></a>
     <a href="https://github.com/vitorhssouza" target="_blank"><i class="fa fa-github"></i></a>
 </div>
+
