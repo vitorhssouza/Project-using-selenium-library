@@ -23,7 +23,8 @@ do processo e *pandas* para imprimir o resultado em um dataframe
 
 Vitor Hugo Silva Souza | E-mail: vitorsouzasilvaa@hotmail.com
 
- <div>
+
+<div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <a href="https://www.linkedin.com/in/vitorhugossouza/" target="_blank"><i class="fa fa-linkedin"></i></a>
     <a href="https://www.facebook.com/vitorugoo.kta" target="_blank"><i class="fa fa-facebook"></i></a>
