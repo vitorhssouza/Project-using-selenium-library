@@ -10,6 +10,7 @@ imprimimos essa valor em um DataFrame.
 ### Imagem
 ![](imagens/b3%20e%20menu.JPG)
 
+![](imagens/opcao%202.JPG)
 
 
 ### Ambiente de desenvolvimento
