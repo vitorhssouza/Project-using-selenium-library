@@ -9,9 +9,9 @@ imprimimos essa valor em um DataFrame.
 
 ### Imagem
 
-![](imagens/b3%20e%20menu.JPG)
+![](imagens/b3%20e%20menu.JPG "print do projeto b3")
 
-![](imagens/opcao%202.JPG)
+![](imagens/opcao%202.JPG "Print do projeto uol")
 
 ### Ambiente de desenvolvimento
 
@@ -31,4 +31,7 @@ Vitor Hugo Silva Souza | E-mail: vitorsouzasilvaa@hotmail.com
     <a href="https://github.com/vitorhssouza" target="_blank"><i class="fa fa-github"></i></a>
 </div>
 
-[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vitorhugossouza/)
+[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vitorhugossouza/) 
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/vitorugoo.kta) 
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/viitorsouza10/) 
+[![!Currículo](https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://vitorhssouza.github.io/#home)
