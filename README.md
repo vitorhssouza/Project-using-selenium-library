@@ -12,7 +12,6 @@ imprimimos essa valor em um DataFrame.
 
 ![](imagens/opcao%202.JPG)
 
-
 ### Ambiente de desenvolvimento
 
 Esse projeto foi desenvolvido pela linguagem Python na versão
