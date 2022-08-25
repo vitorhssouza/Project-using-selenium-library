@@ -7,6 +7,8 @@ de ações do site economia.uol.Através da biblioteca selenium
 foi criado essa automatização e com a biblioteca pandas 
 imprimimos essa valor em um DataFrame. 
 
+### Imagem
+![](imagens/b3%20e%20menu.JPG)
 
 
 
