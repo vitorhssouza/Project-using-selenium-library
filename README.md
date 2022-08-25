@@ -9,6 +9,8 @@ imprimimos essa valor em um DataFrame.
 
 ### Imagem
 
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/1200px-Python.svg.png)
+
 ![](imagens/b3%20e%20menu.JPG "print do projeto b3")
 
 ![](imagens/opcao%202.JPG "Print do projeto uol")
