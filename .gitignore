@@ -1,1 +1,6 @@
-/.gitignore.txt
+/selenium
+/.idea
+/__pycache__/
+/modulos/__pycache__/funcoes.cpython-310.pyc
+
+
