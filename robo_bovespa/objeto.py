@@ -10,40 +10,45 @@ from modulos_interface.funcoes import *
 from time import sleep
 
 
+
 class Empresa:
     """
     Essa classe recebe os códigos das empresas que seram pesquisada na classe uol e retorna
     os códigos inseridos em uma lista
     """
+    try:
+        def __init__(self, codigo: list) -> list:
+            self.__codigo = codigo
 
-    def __init__(self, codigo: list) -> list:
-        self.__codigo = codigo
-
-    @property
-    def codigo(self: object) -> list:
-        return self.__codigo
+        @property
+        def codigo(self: object) -> list:
+            return self.__codigo
+    except:
+        print('Ocorreu algum error')
 
 
 class B3:
     """
     Essa classe rebece um site e abre ele no navegador.
     """
-    def __init__(self: object, site: str) -> None:
-        self.__site = site
+    try:
+        def __init__(self: object, site: str) -> None:
+            self.__site = site
 
-    @property
-    def site(self: object) -> None:
-        driver = webdriver.Chrome(
-            service=Service(ChromeDriverManager().install())
-        )
-        driver.get(self.__site)
-        driver = input('Nesse site encontramos codígos de ações que estão na bolsa de valores\n'
-                       'Aperte ENTER para fechar o site.')
+        @property
+        def site(self: object) -> None:
+            driver = webdriver.Chrome(
+                service=Service(ChromeDriverManager().install())
+            )
+            driver.get(self.__site)
+            driver = input('Nesse site encontramos codígos de ações que estão na bolsa de valores\n'
+                           'Aperte ENTER para fechar o site.')
 
-        self.__site = driver
+            self.__site = driver
 
-        return self.__site
-
+            return self.__site
+    except:
+        print('Ocorreu algum erro')
 
 class Uol(Empresa):
     """
@@ -51,54 +56,57 @@ class Uol(Empresa):
     das ações na ibovespa através dos códigos que o usuario inseriu e retorna os valores atual em um
     dataframe pandas
     """
+    try:
+        def __init__(self: object, codigo: list, uol: str) -> None:
+            super().__init__(codigo)
+            self.__uol = uol
 
-    def __init__(self: object, codigo: list, uol: str) -> None:
-        super().__init__(codigo)
-        self.__uol = uol
+        @property
+        def uol(self: object) -> None:
+            #options = Options()
+            #options.add_argument('--headless')
 
-    @property
-    def uol(self: object) -> None:
-        #options = Options()
-        #options.add_argument('--headless')
+            driver = webdriver.Chrome(
+                service=Service(ChromeDriverManager().install())
+                #options=options
+            )
 
-        driver = webdriver.Chrome(
-            service=Service(ChromeDriverManager().install())
-            #options=options
-        )
+            driver.get(self.__uol)
 
-        driver.get(self.__uol)
+            valores = list()
+            data_hora = list()
+            codigos_empresas = list()
 
-        valores = list()
-        data_hora = list()
-        codigos_empresas = list()
+            for espaco in self._Empresa__codigo:
+                if espaco not in '':
+                    codigos_empresas.append(espaco)
 
-        for espaco in self._Empresa__codigo:
-            if espaco not in '':
-                codigos_empresas.append(espaco)
+            for empresa in codigos_empresas:
+                input_busca = driver.find_element(By.ID, 'filled-normal')
 
-        for empresa in codigos_empresas:
-            input_busca = driver.find_element(By.ID, 'filled-normal')
+                input_busca.send_keys(empresa)
+                sleep(8)
 
-            input_busca.send_keys(empresa)
-            sleep(8)
+                input_busca.send_keys(Keys.ENTER)
+                sleep(4)
 
-            input_busca.send_keys(Keys.ENTER)
-            sleep(4)
+                span_val = driver.find_element(By.XPATH, '//span[@class="chart-info-val ng-binding"]')
+                cotacao_valor = span_val.text
 
-            span_val = driver.find_element(By.XPATH, '//span[@class="chart-info-val ng-binding"]')
-            cotacao_valor = span_val.text
+                valores.append(cotacao_valor)
+                data_hora.append(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
 
-            valores.append(cotacao_valor)
-            data_hora.append(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
+                #print(f'Valor da cotação da {empresa}: {cotacao_valor}')
 
-            #print(f'Valor da cotação da {empresa}: {cotacao_valor}')
+            dados = {
+                'Data': data_hora,
+                'Empresa': codigos_empresas,
+                'Cotação': valores
+                }
+            self.__uol = pd.DataFrame(dados)
+            self.__uol.set_index('Data', inplace=True)
+            return self.__uol
 
-        dados = {
-            'Data': data_hora,
-            'Empresa': codigos_empresas,
-            'Cotação': valores
-            }
-        self.__uol = pd.DataFrame(dados)
-        self.__uol.set_index('Data', inplace=True)
-        return self.__uol
+    except:
+        print('Ocorreu algum erro')
 
