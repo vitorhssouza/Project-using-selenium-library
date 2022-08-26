@@ -6,7 +6,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from datetime import datetime
 import pandas as pd
-from modulos.funcoes import *
+from modulos_interface.funcoes import *
 from time import sleep
 
 
@@ -59,6 +59,7 @@ class Uol(Empresa):
     @property
     def uol(self: object) -> None:
         options = Options()
+
         #options.add_argument('--headless')
 
         driver = webdriver.Chrome(
@@ -91,7 +92,7 @@ class Uol(Empresa):
             valores.append(cotacao_valor)
             data_hora.append(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
 
-            #print(f'Valor da cotação da {empresa}: {cotacao_valor}')
+            print(f'Valor da cotação da {empresa}: {cotacao_valor}')
 
         dados = {
             'Data': data_hora,

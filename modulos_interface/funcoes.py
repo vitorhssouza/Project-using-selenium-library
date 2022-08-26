@@ -1,4 +1,4 @@
-from objeto import Empresa, Uol, B3
+from robo_bovespa.objeto import Empresa, Uol, B3
 from time import sleep
 
 
