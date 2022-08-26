@@ -91,7 +91,7 @@ class Uol(Empresa):
             valores.append(cotacao_valor)
             data_hora.append(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
 
-            #print(f'Valor da cotação da {empresa}: {cotacao_valor}')
+            print(f'Valor da cotação da {empresa}: {cotacao_valor}')
 
         dados = {
             'Data': data_hora,
