@@ -10,40 +10,45 @@ from modulos_interface.funcoes import *
 from time import sleep
 
 
+
 class Empresa:
     """
     Essa classe recebe os códigos das empresas que seram pesquisada na classe uol e retorna
     os códigos inseridos em uma lista
     """
+    try:
+        def __init__(self, codigo: list) -> list:
+            self.__codigo = codigo
 
-    def __init__(self, codigo: list) -> list:
-        self.__codigo = codigo
-
-    @property
-    def codigo(self: object) -> list:
-        return self.__codigo
+        @property
+        def codigo(self: object) -> list:
+            return self.__codigo
+    except:
+        print('Ocorreu algum error')
 
 
 class B3:
     """
     Essa classe rebece um site e abre ele no navegador.
     """
-    def __init__(self: object, site: str) -> None:
-        self.__site = site
+    try:
+        def __init__(self: object, site: str) -> None:
+            self.__site = site
 
-    @property
-    def site(self: object) -> None:
-        driver = webdriver.Chrome(
-            service=Service(ChromeDriverManager().install())
-        )
-        driver.get(self.__site)
-        driver = input('Nesse site encontramos codígos de ações que estão na bolsa de valores\n'
-                       'Aperte ENTER para fechar o site.')
+        @property
+        def site(self: object) -> None:
+            driver = webdriver.Chrome(
+                service=Service(ChromeDriverManager().install())
+            )
+            driver.get(self.__site)
+            driver = input('Nesse site encontramos codígos de ações que estão na bolsa de valores\n'
+                           'Aperte ENTER para fechar o site.')
 
-        self.__site = driver
+            self.__site = driver
 
-        return self.__site
-
+            return self.__site
+    except:
+        print('Ocorreu algum erro')
 
 class Google(Empresa):
     """
@@ -51,65 +56,62 @@ class Google(Empresa):
     das ações na ibovespa através dos códigos que o usuario inseriu e retorna os valores atual em um
     dataframe pandas
     """
+    try:
+        def __init__(self: object, codigo: list, google: str) -> None:
+            super().__init__(codigo)
+            self.__google = google
 
-    def __init__(self: object, codigo: list, google: str) -> None:
-        super().__init__(codigo)
-        self.__google = google
+        @property
+        def google(self: object) -> None:
+            #options = Options()
 
-    @property
-    def google(self: object) -> None:
-        options = Options()
+            #options.add_argument('--headless')
+            driver = webdriver.Chrome(
+                service=Service(ChromeDriverManager().install())
+                #options=options
+            )
+            driver.get(self.__google)
 
-        #options.add_argument('--headless')
+            valores = list()
+            data_hora = list()
+            codigos_empresas = list()
 
-        driver = webdriver.Chrome(
-            service=Service(ChromeDriverManager().install())
-            #options=options
-        )
+            for espaco in self._Empresa__codigo:
+                if espaco not in '':
+                    codigos_empresas.append(espaco)
 
-        driver.get(self.__google)
+            for empresa in codigos_empresas:
+                input_busca = driver.find_element(By.XPATH, '//input[@class="gLFyf gsfi"]')
 
-        valores = list()
-        data_hora = list()
-        codigos_empresas = list()
+                input_busca.send_keys(empresa)
+                sleep(8)
 
-        for espaco in self._Empresa__codigo:
-            if espaco not in '':
-                codigos_empresas.append(espaco)
+                input_busca.send_keys(Keys.ENTER)
+                sleep(4)
 
-        for empresa in codigos_empresas:
-            input_busca = driver.find_element(By.XPATH, '//input[@class="gLFyf gsfi"]')
+                span_val = driver.find_element(By.XPATH, '//span[@class="IsqQVc NprOob wT3VGc"]')
+                cotacao_valor = span_val.text
 
-            input_busca.send_keys(empresa)
-            sleep(8)
+                valores.append(cotacao_valor)
+                data_hora.append(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
 
-            input_busca.send_keys(Keys.ENTER)
-            sleep(4)
+                #print(f'Valor da cotação da {empresa}: {cotacao_valor}')
 
-            span_val = driver.find_element(By.XPATH, '//span[@class="IsqQVc NprOob wT3VGc"]')
-            cotacao_valor = span_val.text
+                input_busca = driver.find_element(By.XPATH, '//input[@class="gLFyf gsfi"]')
+                sleep(2)
+                input_busca.clear()
+                sleep(4)
 
-            valores.append(cotacao_valor)
-            data_hora.append(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
+            dados = {
+                'Data': data_hora,
+                'Empresa': codigos_empresas,
+                'Cotação': valores
+                }
+            self.__google = pd.DataFrame(dados)
+            self.__google.set_index('Data', inplace=True)
+            return self.__google
 
-            #print(f'Valor da cotação da {empresa}: {cotacao_valor}')
-            #sleep(6)
-
-            input_busca = driver.find_element(By.XPATH, '//input[@class="gLFyf gsfi"]')
-            sleep(2)
-            input_busca.clear()
-            sleep(4)
-
-        dados = {
-            'Data': data_hora,
-            'Empresa': codigos_empresas,
-            'Cotação': valores
-            }
-        self.__google = pd.DataFrame(dados)
-        self.__google.set_index('Data', inplace=True)
-        return self.__google
-
-
-
+    except:
+        print('Ocorreu algum erro')
 
 
