@@ -45,19 +45,19 @@ class B3:
         return self.__site
 
 
-class Uol(Empresa):
+class Google(Empresa):
     """
     Essa classe herda da classe empresas os dados que foram inserido e cria um robô que busca os valores
     das ações na ibovespa através dos códigos que o usuario inseriu e retorna os valores atual em um
     dataframe pandas
     """
 
-    def __init__(self: object, codigo: list, uol: str) -> None:
+    def __init__(self: object, codigo: list, google: str) -> None:
         super().__init__(codigo)
-        self.__uol = uol
+        self.__google = google
 
     @property
-    def uol(self: object) -> None:
+    def google(self: object) -> None:
         options = Options()
 
         #options.add_argument('--headless')
@@ -67,7 +67,7 @@ class Uol(Empresa):
             #options=options
         )
 
-        driver.get(self.__uol)
+        driver.get(self.__google)
 
         valores = list()
         data_hora = list()
@@ -78,7 +78,7 @@ class Uol(Empresa):
                 codigos_empresas.append(espaco)
 
         for empresa in codigos_empresas:
-            input_busca = driver.find_element(By.ID, 'filled-normal')
+            input_busca = driver.find_element(By.XPATH, '//input[@class="gLFyf gsfi"]')
 
             input_busca.send_keys(empresa)
             sleep(8)
@@ -86,20 +86,30 @@ class Uol(Empresa):
             input_busca.send_keys(Keys.ENTER)
             sleep(4)
 
-            span_val = driver.find_element(By.XPATH, '//span[@class="chart-info-val ng-binding"]')
+            span_val = driver.find_element(By.XPATH, '//span[@class="IsqQVc NprOob wT3VGc"]')
             cotacao_valor = span_val.text
 
             valores.append(cotacao_valor)
             data_hora.append(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
 
             print(f'Valor da cotação da {empresa}: {cotacao_valor}')
+            sleep(6)
+
+            input_busca = driver.find_element(By.XPATH, '//input[@class="gLFyf gsfi"]')
+            sleep(2)
+            input_busca.clear()
+            sleep(4)
 
         dados = {
             'Data': data_hora,
             'Empresa': codigos_empresas,
             'Cotação': valores
             }
-        self.__uol = pd.DataFrame(dados)
-        self.__uol.set_index('Data', inplace=True)
-        return self.__uol
+        self.__google = pd.DataFrame(dados)
+        self.__google.set_index('Data', inplace=True)
+        return self.__google
+
+
+
+
 
