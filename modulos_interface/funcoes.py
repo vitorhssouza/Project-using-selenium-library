@@ -1,4 +1,4 @@
-from robo_bovespa.objeto import Empresa, Uol, B3
+from robo_bovespa.objeto import Empresa, Google, B3
 from time import sleep
 
 
@@ -68,8 +68,8 @@ def nome_empresa() -> list:
     codigos_empresas = Empresa(empresas)
     sleep(2)
     print('Imprimindo as cotações das empresas ')
-    uol = Uol(empresas, 'https://economia.uol.com.br/cotacoes/bolsas/')
-    print(uol.uol)
+    google = Google(empresas, 'https://www.google.com.br/')
+    print(google.google)
 
 
 
