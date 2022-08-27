@@ -92,8 +92,8 @@ class Google(Empresa):
             valores.append(cotacao_valor)
             data_hora.append(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
 
-            print(f'Valor da cotação da {empresa}: {cotacao_valor}')
-            sleep(6)
+            #print(f'Valor da cotação da {empresa}: {cotacao_valor}')
+            #sleep(6)
 
             input_busca = driver.find_element(By.XPATH, '//input[@class="gLFyf gsfi"]')
             sleep(2)
