@@ -11,7 +11,7 @@ imprimimos essa valor em um DataFrame.
 
 ![](imagens/b3.JPG "print do projeto b3")
 
-![](imagens/busca.JPG "Print do projeto")
+![](imagens/google.JPG "Print do projeto")
 
 ### Ambiente de desenvolvimento
 
