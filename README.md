@@ -3,7 +3,7 @@ Creating python projects using selenium to do a data scrape
 
 ### 1 - Projeto Robô Bovespa 
 Nesse projeto foi criado um robô que coleta os valores atuais
-de ações do site economia.uol.Através da biblioteca selenium 
+de ações do google.Através da biblioteca selenium 
 foi criado essa automatização e com a biblioteca pandas 
 imprimimos essa valor em um DataFrame. 
 
@@ -11,7 +11,7 @@ imprimimos essa valor em um DataFrame.
 
 ![](imagens/b3.JPG "print do projeto b3")
 
-![](imagens/busca.JPG "Print do projeto uol")
+![](imagens/busca.JPG "Print do projeto")
 
 ### Ambiente de desenvolvimento
 
