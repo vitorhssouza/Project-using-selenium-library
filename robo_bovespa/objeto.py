@@ -84,10 +84,10 @@ class Google(Empresa):
                 input_busca = driver.find_element(By.XPATH, '//input[@class="gLFyf gsfi"]')
 
                 input_busca.send_keys(empresa)
-                sleep(8)
+                sleep(5)
 
                 input_busca.send_keys(Keys.ENTER)
-                sleep(4)
+                sleep(3)
 
                 span_val = driver.find_element(By.XPATH, '//span[@class="IsqQVc NprOob wT3VGc"]')
                 cotacao_valor = span_val.text
